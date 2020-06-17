@@ -209,19 +209,6 @@
 			<version>2.10.0</version>
 		</dependency>
 		
-		<!-- JSON mapping -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
-		<!-- jackson 2.5버전 >> spring 3 호환 -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.5.3</version>
-		</dependency>
-
 		<!-- mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
