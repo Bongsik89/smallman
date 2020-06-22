@@ -31,7 +31,7 @@
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml"></property>
+		<property name="mapperLocations" value="classpath*:/mappers/**/*Mapper.xml"></property>
 	</bean>
 	
 	<!-- SqlSessionTemplate --> 
@@ -43,7 +43,7 @@
  	
  	<aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
 	
-<!-- 	<context:component-scan base-package="org.smallman.board.*"></context:component-scan>
- -->
+	<!-- <context:component-scan base-package="org.smallman.board.*"></context:component-scan> -->
+
 
 </beans>
