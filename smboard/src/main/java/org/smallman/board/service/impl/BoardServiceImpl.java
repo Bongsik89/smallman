@@ -11,77 +11,65 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BoardServiceImpl implements BoardService{
-	
+public class BoardServiceImpl implements BoardService {
+
 	@Autowired
 	private BoardDAO boardDAO;
 
 	@Override
 	public List<BoardVO> listPageCriteria(PageCriteria pc) throws Exception {
-		// TODO Auto-generated method stub
 		return boardDAO.listPageCriteria(pc);
 	}
 
 	@Override
 	public Integer totalCount() throws Exception {
-		// TODO Auto-generated method stub
 		return boardDAO.totalCount();
 	}
 
 	@Override
 	public BoardVO boardRead(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
 		return boardDAO.boardRead(params);
 	}
 
 	@Override
 	public void countHit(int b_num) throws Exception {
-		// TODO Auto-generated method stub
-		
+		boardDAO.countHit(b_num);
 	}
 
 	@Override
 	public void boardWrite(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		boardDAO.boardWrite(params);
 	}
 
 	@Override
 	public void boardUpdate(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		boardDAO.boardUpdate(params);
 	}
 
 	@Override
 	public void boardDelete(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		boardDAO.boardDelete(params);
 	}
 
 	@Override
 	public void countReply(int b_num) throws Exception {
-		// TODO Auto-generated method stub
-		
+		boardDAO.countHit(b_num);
+
 	}
 
 	@Override
 	public List<BoardVO> searchBoard(HashMap<String, Object> search_params) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDAO.searchBoard(search_params);
 	}
 
 	@Override
 	public Integer searchTotalCount(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDAO.searchTotalCount(params);
 	}
 
 	@Override
 	public void countRecommned(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		boardDAO.countRecommned(params);
 	}
-	
-	
 
 }

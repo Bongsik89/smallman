@@ -1,9 +1,13 @@
 package org.smallman.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.smallman.board.common.paging.PageCriteria;
 import org.smallman.board.common.paging.PageMaker;
+import org.smallman.board.common.paging.ReplyPageCriteria;
 import org.smallman.board.service.BoardService;
 import org.smallman.board.vo.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BoardController {
@@ -55,6 +60,26 @@ public class BoardController {
 			model.addAttribute("list", bvo);
 
 			return "index";
+		}
+		
+		// 글 내용 보기
+		// params에 담기는 파라미터 page, perPageNum, b_num
+		// rpc에 담기는 파라미터 replyPage, replyPerPageNum
+		@RequestMapping("board/view")
+		public String responseRead(ReplyPageCriteria rpc, @RequestParam HashMap<String, Object> params, Model model, HttpSession session) throws Exception{
+			//글 내용 가져오기
+			BoardVO bvo = boardService.boardRead(params);
+			
+			int b_num = Integer.parseInt((String) params.get("b_num"));
+			
+			HashMap<String, Object> reply_params = new HashMap<String, Object>();
+			reply_params.put("b_num", b_num);
+			reply_params.put("replyPageStart", rpc.getReplyPageStart());
+			reply_params.put("replyPerPageNum", rpc.getReplyPerPageNum());
+			
+			//댓글 리스트 불러오기
+			
+			return "board/writeForm";
 		}
 
 }

@@ -11,77 +11,72 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BoardDAOImpl implements BoardDAO{
-	
+public class BoardDAOImpl implements BoardDAO {
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	final static String NAMESPACE_BOARD = "org.smallman.board.mappers.boardMapper";
 
 	@Override
 	public List<BoardVO> listPageCriteria(PageCriteria pc) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE_BOARD + ".listPageCriteria", pc);
 	}
 
 	@Override
 	public Integer totalCount() throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE_BOARD + ".totalCount");
 	}
 
 	@Override
 	public BoardVO boardRead(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE_BOARD + ".boardRead", params);
 	}
 
 	@Override
 	public void countHit(int b_num) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update(NAMESPACE_BOARD + ".countHit", b_num);
+
 	}
 
 	@Override
 	public void boardWrite(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert(NAMESPACE_BOARD + ".boardWrite", params);
+
 	}
 
 	@Override
 	public void boardUpdate(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update(NAMESPACE_BOARD + ".boardUpdate", params);
+
 	}
 
 	@Override
 	public void boardDelete(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.delete(NAMESPACE_BOARD + ".boardDelete", params);
+
 	}
 
 	@Override
 	public void countReply(int b_num) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update(NAMESPACE_BOARD + ".countReply", b_num);
+
 	}
 
 	@Override
 	public List<BoardVO> searchBoard(HashMap<String, Object> search_params) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(NAMESPACE_BOARD + ".searchBoard", search_params);
 	}
 
 	@Override
 	public Integer searchTotalCount(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE_BOARD + ".searchTotalCount", params);
 	}
 
 	@Override
 	public void countRecommned(HashMap<String, Object> params) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update(NAMESPACE_BOARD + ".countRecommend", params);
+
 	}
 
 }

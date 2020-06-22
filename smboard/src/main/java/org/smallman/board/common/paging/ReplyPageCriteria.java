@@ -7,6 +7,10 @@ public class ReplyPageCriteria {
 
 	private int replyPage;
 	private int replyPerPageNum;
+	
+	public int getReplyPageStart() {
+		return (this.replyPage -1) * this.replyPerPageNum;
+	}
 
 	// 생성자
 	public ReplyPageCriteria() {
